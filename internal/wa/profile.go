@@ -101,3 +101,14 @@ func (c *Client) GetBusinessProfile(ctx context.Context, jid types.JID) (*types.
 	}
 	return cli.GetBusinessProfile(ctx, jid)
 }
+
+// SetGroupPicture sets (avatar != nil) or removes (avatar == nil) a group's picture.
+func (c *Client) SetGroupPicture(ctx context.Context, jid types.JID, avatar []byte) (string, error) {
+	c.mu.Lock()
+	cli := c.client
+	c.mu.Unlock()
+	if cli == nil || !cli.IsConnected() {
+		return "", fmt.Errorf("not connected")
+	}
+	return cli.SetGroupPhoto(ctx, jid, avatar)
+}

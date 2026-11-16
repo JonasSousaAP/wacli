@@ -1135,3 +1135,7 @@ func (f *fakeWA) LinkedLID() string {
 func (f *fakeWA) DownloadRetriedMediaToFile(ctx context.Context, directPath string, fileHash, mediaKey []byte, fileLength uint64, mediaType, targetPath string) (int64, error) {
 	return f.DownloadMediaToFile(ctx, directPath, nil, fileHash, mediaKey, fileLength, mediaType, "", targetPath)
 }
+
+func (f *fakeWA) SetGroupPicture(ctx context.Context, jid types.JID, avatar []byte) (string, error) {
+	return "fake", nil
+}

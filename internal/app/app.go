@@ -104,6 +104,7 @@ type WAClient interface {
 	LinkedLID() string
 
 	SetProfilePicture(ctx context.Context, avatar []byte) (string, error)
+	SetGroupPicture(ctx context.Context, jid types.JID, avatar []byte) (string, error)
 	GetProfilePictureInfo(ctx context.Context, jid types.JID, preview bool, existingID string) (*types.ProfilePictureInfo, error)
 	SetStatusMessage(ctx context.Context, msg string) error
 	SetProfileName(ctx context.Context, name string) error
